@@ -1,0 +1,12 @@
+megs:            32
+    display_library: sdl2
+    romimage:        file=/usr/share/bochs/BIOS-bochs-latest, options=fastboot
+    vgaromimage:     file=/usr/share/bochs/VGABIOS-lgpl-latest
+    ata0-master:     type=cdrom, path=grub.iso, status=inserted
+    boot:            cdrom
+    log:             bochslog.txt
+    clock:           sync=realtime, time0=local
+    cpu:             count=1, model=corei5_lynnfield_750, ips=1000000
+    plugin_ctrl:     e1000=1, serial=1
+    e1000: enabled=1, mac=52:54:00:12:34:56, ethmod=slirp,script=slirp.conf,ethdev=/home/gonzo/tftp
+    com1: enabled=1, mode=file, dev=serial.out
