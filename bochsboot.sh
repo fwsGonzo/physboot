@@ -22,4 +22,4 @@ grub-mkrescue -o grub.iso $LOCAL_DISK
 echo "grub.iso constructed"
 
 # go!
-bochs -q
+#bochs -q
