@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 SERVICE=${1:-"/home/gonzo/github/IncludeOS/examples/IRCd/build/IRCd"}
-#SERVICE=${1:-"/home/gonzo/github/IncludeOS/seed/service/build/seed"}
+#SERVICE=${1:-"/home/gonzo/github/IncludeOS/test/kernel/integration/smp/build/smp"}
 SERVICE_DIR=$(dirname "${SERVICE}")
 echo $SERVICE_DIR
 
@@ -13,14 +13,14 @@ make -j
 popd
 
 LOCAL_DISK=temp_disk
-DISK=/dev/sdc
+DISK=/dev/sdd
 
 # create grub.iso
 mkdir -p $LOCAL_DISK/boot/grub
 cp $SERVICE $LOCAL_DISK/boot/service
 cp grub.cfg $LOCAL_DISK/boot/grub
 echo "=>"
-grub-mkrescue -o grub.iso $LOCAL_DISK
+grub-mkrescue -d /usr/lib/grub/i386-pc -o grub.iso $LOCAL_DISK
 echo "grub.iso constructed"
 
 # install to physical block device
